@@ -17,14 +17,6 @@
 var alphabet = ['a','b','c','d','e','f','g','h','i',
 'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-
-console.log(alphabet.length)
-
-
-
-var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)]
-	console.log(randomletter)
-
  var wins = 0;
  	console.log(wins)
 
@@ -34,34 +26,38 @@ var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)]
  var guessesleft =10;
  console.log(guessesleft)
 
-var guessessofar = [];
-	console.log(guessessofar)
-
+// var guessessofar = new Array();
+// 	console.log(guessessofar)
+var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)]
+	console.log(randomletter);
 
 // when key is pressed, perform this function.
 document.onkeyup = function() {
 
 
 // save the key pressed, convert it from uppercase, and console.log it. 
-var letter = String.fromCharCode(event.keycode).toLowerCase();
+var letter = String.fromCharCode(event.keyCode).toLowerCase();
 	console.log(letter);
+
 
 	
 // if the letter chosen is the same as the random one generated in the variable randomletter, alert correct and increase wins by 1. 
 if (letter === randomletter){
 
 	alert("Correct!");
-
+	console.log(letter)
+console.log(randomletter)
 	wins = wins +1;
-
+	
 }
 // however, when guesses left is = 0, a loss is accrued. 
-else if (guessesleft === 0){
 
-	alert("You lose.");
 
+if (guessesleft === 0){
+alert("You lose.");
 	losses = losses +1;
 	guessesleft=10;
+
 	
 	var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)]
 	console.log(randomletter)
@@ -72,16 +68,24 @@ else if (guessesleft === 0){
 else {
 
 guessesleft = guessesleft-1;
+ 
 
+
+// for (var i=0; i<guessessofar.length; i++) {
+//   document.write("Element " +i+ " contains: " +guessessofar[i]+ "<br />");
 }
 
 
 
-document.querySelector('#game').innerHTML = "<p>" + "Guess what letter I'm thinking!" + "</p>" + "<p>"+ guessessofar +"</p>"+ "<p>" + wins +"</p>" + "<p>" +losses +"</p>" + "<p>" + guessesleft + "</p>";
 
-
-
+document.querySelector('#game').innerHTML = "<p>" + "Guess what letter I'm thinking!" + "</p>" + "<p>"+ "previous guess: " + letter +"</p>"+ "<p>" + wins +"</p>" + "<p>" +losses +"</p>" + "<p>" + guessesleft + "</p>";
+	
 }
+
+
+
+
+
 
 // need to get the guessesleft on screen to decrease. 
 // need to get wins to be recognized and displayed

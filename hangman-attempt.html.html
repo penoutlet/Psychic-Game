@@ -17,14 +17,8 @@ Guess a fruit.
   // secret word is picked by computer randomly out of the array of possible words
   // the screen shows a number of blanks equal to the number of letters in secret word
   //   - treat string like an array, loop over it, and for each letter, display the following string: "_"
-  var underscores = [],
-  var wordbank = [
-       word1= "Starfox",
-        word2 = "Link",
-         word3 = "Mario",
-         word4= "Luigi",
-         word5= "Bowser",
-                  ]
+  var underscores = [];
+  var wordbank = ["Starfox","Link","Mario","Luigi","Bowser"];
         // Picks a random word from hangman.
     var randomword = wordbank[Math.floor(Math.random()*wordbank.length)]
         console.log(randomword) 
