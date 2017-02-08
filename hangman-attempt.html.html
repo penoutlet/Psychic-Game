@@ -1,0 +1,116 @@
+
+<DOCTYPE! html>
+<html> 
+<body>
+<div id="game"> 
+
+<p> Fruit Hangman!
+
+Guess a fruit. 
+
+</p>
+
+</div>
+<script type="text/javascript">
+
+//  create an array of possible words
+  // secret word is picked by computer randomly out of the array of possible words
+  // the screen shows a number of blanks equal to the number of letters in secret word
+  //   - treat string like an array, loop over it, and for each letter, display the following string: "_"
+  var underscores = [],
+  var wordbank = [
+       word1= "Starfox",
+        word2 = "Link",
+         word3 = "Mario",
+         word4= "Luigi",
+         word5= "Bowser",
+                  ]
+        // Picks a random word from hangman.
+    var randomword = wordbank[Math.floor(Math.random()*wordbank.length)]
+        console.log(randomword) 
+         // creates the underscores = to the length of randomword. 
+    var underscores = " ";
+    for (i=0; i<randomword.length; i++) {
+
+      underscores = underscores + "_ "
+    }
+    console.log(underscores)
+     var losses = 0;
+    
+    var wins = 0;
+    var guessesleft = 10;
+    var previousGuesses = [];
+         
+    
+     
+  // on key release , run function. WHen user types a key, store the key in a variable called letterGuess. 
+
+
+  document.onkeyup = function () {
+  	
+
+
+    
+    var letterGuess = String.fromCharCode(event.keyCode).toLowerCase();
+        console.log(letterGuess)
+    
+       
+ // Displays the predetermined no. of underscores.
+
+
+    document.querySelector('#game').innerHTML = "<p>" + underscores +"</p>" + "<p>"+ guessesleft + "</p>";
+
+
+// If the letter guessed is in the random word, alert correct, and replace the corresponding underscore with the letter guessed.
+ if(randomword.indexOf(letterGuess)>-1) {
+
+
+  alert('Correct!')
+  underscores.replace(/_/, letterGuess)
+   }
+
+
+ 
+// if letter guess is not in previous guesses, put it in previous guesses and subtract one form guesses. 
+
+
+if (previousGuesses.indexOf(letterGuess)===-1)
+
+{
+
+console.log("New Guess") 
+alert('Incorrect Guess')
+previousGuesses.push(letterGuess)
+guessesleft--;
+}
+
+// if letterguess has already been guessed, alert that the letter has been chosen
+if (previousGuesses.indexOf(letterGuess)>-1){
+
+  alert('Letter Chosen already')
+}
+
+
+
+
+if (guessesleft ===0){
+
+  alert('You lose!')
+  losses++;
+  }
+  
+
+}
+
+
+
+
+
+// first letter chosen gets all three alerts, correct, incorrect and chosen already.
+// correct letters chosen decrease the number of guesses left and also display chosen already. 
+
+ 
+
+
+  </script>
+  </html>
