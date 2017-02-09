@@ -18,21 +18,21 @@ var alphabet = ['a','b','c','d','e','f','g','h','i',
 'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
  var wins = 0;
- 	console.log(wins)
+ 	console.log(wins);
 
  var losses = 0;
- 	console.log(losses)
+ 	console.log(losses);
  
  var guessesleft =10;
- console.log(guessesleft)
+ console.log(guessesleft);
 
 // var guessessofar = new Array();
 // 	console.log(guessessofar)
-var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)]
+var randomletter = alphabet[Math.floor(Math.random()*alphabet.length)];
 	console.log(randomletter);
 
 // when key is pressed, perform this function.
-document.onkeyup = function() {
+document.onkeyup = function(event) {
 
 
 // save the key pressed, convert it from uppercase, and console.log it. 
@@ -45,13 +45,21 @@ var letter = String.fromCharCode(event.keyCode).toLowerCase();
 if (letter === randomletter){
 
 	alert("Correct!");
-	console.log(letter)
-console.log(randomletter)
+	console.log(letter);
+console.log(randomletter);
 	wins = wins +1;
 	
 }
 // however, when guesses left is = 0, a loss is accrued. 
+else {
 
+guessesleft = guessesleft-1;
+ 
+
+
+// for (var i=0; i<guessessofar.length; i++) {
+//   document.write("Element " +i+ " contains: " +guessessofar[i]+ "<br />");
+}
 
 if (guessesleft === 0){
 alert("You lose.");
@@ -65,15 +73,7 @@ alert("You lose.");
 
 // if neither of the above conditions, (letter chosen and the secret letter are the same, or there are guesses left) decrease guesses left by 1. 
 
-else {
 
-guessesleft = guessesleft-1;
- 
-
-
-// for (var i=0; i<guessessofar.length; i++) {
-//   document.write("Element " +i+ " contains: " +guessessofar[i]+ "<br />");
-}
 
 
 
